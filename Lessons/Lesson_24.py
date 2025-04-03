@@ -47,7 +47,7 @@ print(h1.get_name())
 '''
 
 #Задача создать класс Person с данными о сотруднике (имя, фамилия) и двумя методами
-
+'''
 class Person:
     skill = 10
     
@@ -75,3 +75,44 @@ del p1
 p2 = Person("Анна", "Долгих")
 p2.print_info()
 p2.add_skill(2)
+'''
+
+
+# создать класс Робот
+
+class Robot:
+    k = 0
+
+    def __init__(self, name):
+        self.name = name
+        print("Инициализация робота: ", self.name)
+        Robot.k += 1
+
+    def __del__(self):
+        print(self.name, "выключается!")
+        Robot.k -= 1
+        if Robot.k == 0:
+            print(self.name, "был последним")
+        else:
+            print("Работающих роботов осталось:", Robot.k)
+
+
+    def say_hi(self):
+        print("Приветствую! Меня зовут", self.name)
+
+
+droid1 = Robot("R2-D2")
+droid1.say_hi()
+print("Численность роботов:", Robot.k)
+
+droid2 = Robot("C-3PO")
+droid2.say_hi()
+print("Численность роботов:", Robot.k)
+
+print("\nЗдесь роботы могут проделать какую - то работу\n" )
+print("Роботы закончили свою работу. Давайте их выключим.\n")
+
+del droid1
+del droid2
+
+print("Численность роботов:", Robot.k)
