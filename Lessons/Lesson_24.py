@@ -55,6 +55,9 @@ class Person:
         self.name = name
         self.surname = surname
 
+    def __del__(self): # разрывает ссылку на экземпляр класса 
+        print("Удаление экземпляра")
+
     def print_info(self):
         print("Данные сотрудника:", self.name, self.surname)
 
@@ -66,6 +69,8 @@ class Person:
 p1 = Person("Виктор", "Резник")
 p1.print_info()
 p1.add_skill(3)
+
+del p1
 
 p2 = Person("Анна", "Долгих")
 p2.print_info()
