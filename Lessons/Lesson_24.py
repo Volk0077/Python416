@@ -2,6 +2,8 @@
 
 
 # Задача: реализовать класс "Человек"
+
+'''
 class Human:
     name = "name"
     birthday = "00.00.0000"
@@ -42,3 +44,29 @@ h1.print_info()
 h1.set_name('Юлия')
 h1.print_info()
 print(h1.get_name())
+'''
+
+#Задача создать класс Person с данными о сотруднике (имя, фамилия) и двумя методами
+
+class Person:
+    skill = 10
+    
+    def __init__(self,  name, surname):# инициализатор, отрабатывает в момент создания экземпляра класса
+        self.name = name
+        self.surname = surname
+
+    def print_info(self):
+        print("Данные сотрудника:", self.name, self.surname)
+
+    def add_skill(self, k):
+        self.skill += k
+        print('Квалификация сотрудника:', self.skill)
+
+
+p1 = Person("Виктор", "Резник")
+p1.print_info()
+p1.add_skill(3)
+
+p2 = Person("Анна", "Долгих")
+p2.print_info()
+p2.add_skill(2)
