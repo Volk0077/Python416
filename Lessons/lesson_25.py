@@ -4,7 +4,7 @@
 # Задача
 import math
 
-
+"""
 class Rectangle:
     def __init__(self, length, width):
         self.__length = length
@@ -54,3 +54,16 @@ print("Площадь прямоугольника:", r1.get_area())
 print("Периметр прямоугольника:", r1.get_perimetr())
 print("Гипотенуза прямоугольника:", r1.get_hypotenuse())
 r1.get_draw()
+"""
+
+class Point:
+    __slots__ = ["x", "y"] # не разрешает добавить значения кроме указанных
+
+    def __init__(self, x , y):
+        self.x = x
+        self.y = y
+
+
+p1 = Point(5, 10)
+p1.z = 1
+# print(p1.__dict__)
