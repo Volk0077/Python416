@@ -204,3 +204,45 @@ r1.get_draw()
 #
 # print(Point.get_count())
 # print(p1.get_count())
+
+
+class Numbers:
+    @staticmethod
+    def max(a, b, c, d):
+        mx = a  # mx = 3
+        if b > mx:  # 5 > 3
+            mx = b  # mx = 5
+        if c > mx:  # 7 > 5
+            mx = c  # mx = 7
+        if d > mx:  # 9 > 7
+            mx = d  # mx = 9
+        return mx
+
+    @staticmethod
+    def min(*args):
+        mn = args[0]  # 3
+        for i in args:
+            if i < mn:  # 9 < 3
+                mn = i
+        return mn
+
+    # @staticmethod
+    # def average(*args):
+    #     return sum(args) / len(args)
+
+    @staticmethod
+    def average(a, b, c, d):
+        return (a + b + c + d) / 4
+
+    @staticmethod
+    def factorial(n):
+        fact = 1
+        for i in range(1, n + 1):
+             fact *= i
+        return fact
+
+
+print("Максимальное число:", Numbers.max(3, 5, 7, 9))
+print("Минимальное число:", Numbers.min(3, 5, 7, 9))
+print("Среднее арифметическое:", Numbers.average(3, 5, 7, 9))
+print("Факториал числа:", Numbers.factorial(5))
