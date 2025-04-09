@@ -56,14 +56,51 @@ print("Гипотенуза прямоугольника:", r1.get_hypotenuse())
 r1.get_draw()
 """
 
-class Point:
-    __slots__ = ["x", "y"] # не разрешает добавить значения кроме указанных
+# class Point:
+#     __slots__ = ["x", "y"] # не разрешает добавить значения кроме указанных
 
-    def __init__(self, x , y):
-        self.x = x
-        self.y = y
+#     def __init__(self, x , y):
+#         self.x = x
+#         self.y = y
 
 
-p1 = Point(5, 10)
-p1.z = 1
+# p1 = Point(5, 10)
+# p1.z = 1
+# # print(p1.__dict__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __check_value(c):
+#         if isinstance(c, int) or isinstance(c, float):
+#             return True
+#         return False
+#
+#     def __set_coord_x(self, x):
+#         # print("Вызов __set_coord_x")
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Неверный формат данных")
+#
+#     def __get_coord_x(self):
+#         # print("Вызов __get_coord_x")
+#         return self.__x
+#
+#     def __del_coord_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     x = property(__get_coord_x, __set_coord_x, __del_coord_x)
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.__set_coord_x(50))
+# # print(p1.__get_coord_x())
+# p1.x = 50  # set
+# print(p1.x)  # get
+# del p1.x  # del
 # print(p1.__dict__)
