@@ -108,15 +108,10 @@ import re
 
 class UserData:
     def __init__(self, fio, old, ps, weight):
-        self.verify_fio(fio)
-        self.verify_old(old)
-        self.verify_weight(weight)
-        self.verify_ps(ps)
-
-        self.__fio = fio
-        self.__old = old
-        self.__password = ps
-        self.__weight = weight
+        self.fio = fio
+        self.old = old
+        self.password = ps
+        self.weight = weight
 
     @staticmethod
     def verify_fio(fio):
@@ -153,6 +148,48 @@ class UserData:
         for p in s:
             if not p.isdigit():
                 raise TypeError("Серия и номер паспорта должны быть числами")
+            
+    @property
+    def fio(self):
+        return self.__fio
+
+    @fio.setter
+    def fio(self, fio):
+        self.verify_fio(fio)
+        self.__fio = fio
+
+    @property
+    def old(self):
+        return self.__old
+
+    @old.setter
+    def old(self, year):
+        self.verify_old(year)
+        self.__old = year
+
+    @property
+    def password(self):
+        return self.__password
+
+    @password.setter
+    def password(self, ps):
+        self.verify_ps(ps)
+        self.__password = ps
+
+    @property
+    def weight(self):
+        return self.__weight
+
+    @weight.setter
+    def weight(self, w):
+        self.verify_weight(w)
+        self.__weight = w
+
+
+p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
+p1.fio = "Ветров Игорь Николаевич"
+print(p1.fio)
+print(p1.__dict__)
 
 
 p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
