@@ -38,7 +38,8 @@ rect = Rect(Point(30, 40), Point(70, 80))
 rect.draw_rect()
 """
 
-
+# ИСправить проверку на число !!!!
+'''
 class Figure:
     def __init__(self, color):
         self.__color = color
@@ -87,3 +88,37 @@ class Rectangle(Figure):
 
 rect = Rectangle(10, -20, "green")
 print(rect.area())
+'''
+
+
+# Задача
+
+
+class Rect:    
+    def __init__(self, width, height):       
+        self.width = width        
+        self.height = height           
+
+    def show_rect(self):       
+        print(f"Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}")
+
+
+class RectFon(Rect):
+    def __init__(self, width, height, background):
+        super().__init__(width, height)
+        self.fon = background
+
+    def show_rect(self):
+        super().show_rect()
+        print("Фон:", self.fon)
+
+# Домашка-----------------------------------------------------------------------------------------------
+class RectBorder(Rect):
+    ...
+
+
+
+shape1 = RectFon(400, 200, "yellow")
+shape1.show_rect()
+# # Домашка-----------------------------------------------------------------------------------------------
+shape2 = RectBorder(600, 300, "1px", 'solid', 'red')
