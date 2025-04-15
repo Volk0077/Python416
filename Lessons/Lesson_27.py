@@ -38,3 +38,52 @@ rect = Rect(Point(30, 40), Point(70, 80))
 rect.draw_rect()
 """
 
+
+class Figure:
+    def __init__(self, color):
+        self.__color = color
+
+    @property
+    def color(self):
+        return self.__color
+
+    @color.setter
+    def color(self, c):
+        self.__color = c
+
+
+class Rectangle(Figure):
+    def __init__(self, width, height, color):
+        self.__width = width
+        self.__height = height
+        super().__init__(color)
+
+    @property
+    def width(self):
+        return self.__width
+    
+    @width.setter
+    def width(self, w):
+        if isinstance(w, int) and  w > 0:
+            self.__width = w
+        else:
+            raise ValueError('Ширина должна быть положительным числом')
+        
+    @property
+    def height(self):
+        return self.__height
+    
+    @height.setter
+    def height(self, h):
+        if isinstance(h, int) and h > 0:
+            self._height = h
+        else:
+            raise ValueError('Высота должна быть положительным числом')
+
+    def area(self):
+        print(f"Площадь {self.color} прямоугольника:", end=" " )
+        return self.__width * self.__height
+
+
+rect = Rectangle(10, -20, "green")
+print(rect.area())
