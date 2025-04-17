@@ -99,7 +99,7 @@ print(t2.calc_area())
 
 """
 # Задача
-
+'''
 class Currency(ABC):
     suffix = 'RUB'
     def __init__(self, value):
@@ -148,5 +148,35 @@ for elem in d:
 print("*" * 50)
 for elem in e:
     elem.print_info()
+'''
 
+# Интерфейсы
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Father(ABC):
+#     @abstractmethod
+#     def display1(self):
+#         pass
+#
+#     @abstractmethod
+#     def display2(self):
+#         pass
+#
+#
+# class Child(Father):
+#     def display1(self):
+#         print("Child Class")
+#
+#
+# class GrandChild(Child):
+#     def display2(self):
+#         print("GrandChild Class")
+#
+#
+# # c = Child()
+# gc = GrandChild()
+# gc.display1()
+# gc.display2()
 
