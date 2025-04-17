@@ -1,6 +1,6 @@
 # _____________________Абстрактные методы________________________
 
-'''
+"""
 class Point:
     def __init__(self, x, y):
         self.x = x
@@ -44,10 +44,11 @@ shapes.append(Ellipse(Point(80, 80), Point(100, 100), "green", 3))
 
 for i in shapes:
     i.draw()
-'''
+"""
 
 
 from abc import ABC, abstractmethod
+from locale import currency
 from math import pi
 
 # class Chess(ABC):
@@ -58,9 +59,9 @@ from math import pi
 #     def move(self):
 #         ...
 
-# Задача класс стол и дочерние классы прямоугольный сто и круглый стол 
+# Задача класс стол и дочерние классы прямоугольный сто и круглый стол
 
-
+"""
 class Table:
     def __init__(self, width=None, length=None, radius=None):  # 20, None, None
         if radius is None:
@@ -95,3 +96,57 @@ print(t1.calc_area())
 t2 = RoundTable(radius=20)
 print(t2.__dict__)
 print(t2.calc_area())
+
+"""
+# Задача
+
+class Currency(ABC):
+    suffix = 'RUB'
+    def __init__(self, value):
+        self.value = value
+
+    @abstractmethod
+    def convert_to_rub(self): ...
+
+    @abstractmethod
+    def print_value(self):
+        print(self.value, end=" ")
+
+    def print_info(self):
+        self.print_value()
+        print(f" = {self.convert_to_rub():.2f} {Currency.suffix}")
+
+
+class Dollar(Currency):
+    rate_to_rub = 74.16
+    suffix = "USD"
+
+    def convert_to_rub(self):
+        return self.value * Dollar.rate_to_rub
+
+    def print_value(self):
+        super().print_value()
+        print(Dollar.suffix, end=" ")
+
+class Euro(Currency):
+    rate_to_rub = 74.16
+    suffix = "EUR"
+
+    def convert_to_rub(self):
+        return self.value * Euro.rate_to_rub
+
+    def print_value(self):
+        super().print_value()
+        print(Euro.suffix, end=" ")
+
+
+d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+e = [Euro(5), Euro(10), Euro(50), Euro(100)]
+print("*" * 50)
+for elem in d:
+    elem.print_info()
+print("*" * 50)
+for elem in e:
+    elem.print_info()
+
+
