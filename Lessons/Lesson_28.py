@@ -180,3 +180,96 @@ for elem in e:
 # gc.display1()
 # gc.display2()
 
+# Вложенные классы
+
+# class MyOuter:
+#     age = 18
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     @staticmethod
+#     def outer_static_method():
+#         print("Статический метод")
+#
+#     def outer_obj_method(self):
+#         print("Метод экземпляра", self.name)
+#
+#     class MyInner:
+#         def __init__(self, inner_inner, obj):
+#             self.inner_inner = inner_inner
+#             self.obj = obj
+#
+#         def inner_method(self):
+#             print("Метод внутреннего класса", MyOuter.age, self.obj.name)
+#             print(self.inner_inner)
+#             MyOuter.outer_static_method()
+#             self.obj.outer_obj_method()
+#
+#
+# out = MyOuter("внешний")
+# print(out.name)
+# inner = out.MyInner("внутренний", out)
+# # inner = MyOuter.MyInner("внутренний")
+# print(inner.inner_inner)
+# inner.inner_method()
+
+# class LightColor:
+#     def __init__(self):
+#         self.name = "LightGreen"
+#
+#     def display(self):
+#         print("Name:", self.name)
+#
+#
+# class Color:
+#     def __init__(self):
+#         self.name = "Green"
+#         self.lg = LightColor()
+#         self.dg = self.DarkColor()
+#
+#     def show(self):
+#         print("Name:", self.name)
+#
+#     class DarkColor:
+#         def __init__(self):
+#             self.name = "DarkGreen"
+#
+#         def display(self):
+#             print("Name:", self.name)
+#
+#
+# outer = Color()
+# outer.show()
+# print(outer.name)
+# g = outer.lg
+# g.display()
+# g1 = outer.dg
+# g1.display()
+
+
+class Computer:
+    def __init__(self):
+        self.name = "PC001"
+        self.os = self.OS()
+        self.cpu = self.CPU()
+
+    class OS:
+        def system(self):
+            return "Windows 10"
+
+    class CPU:
+        def make(self):
+            return "Intel"
+
+        def model(self):
+            return "Core-i9"
+
+
+comp = Computer()
+my_os = comp.os
+my_cpu = comp.cpu
+print(comp.name)
+print(my_os.system())
+print(my_cpu.make())
+print(my_cpu.model())
