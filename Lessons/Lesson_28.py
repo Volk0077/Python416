@@ -48,13 +48,50 @@ for i in shapes:
 
 
 from abc import ABC, abstractmethod
+from math import pi
 
-class Chess(ABC):
-    def draw(self):
-        print("Нарисовал шахматную доску")
+# class Chess(ABC):
+#     def draw(self):
+#         print("Нарисовал шахматную доску")
 
-    @abstractmethod
-    def move(self):
-        ...
+#     @abstractmethod
+#     def move(self):
+#         ...
+
+# Задача класс стол и дочерние классы прямоугольный сто и круглый стол 
 
 
+class Table:
+    def __init__(self, width=None, length=None, radius=None):  # 20, None, None
+        if radius is None:
+            if length is None:
+                self.width = self.length = width
+            else:
+                self.width = width
+                self.length = length        
+        else:
+            self.radius = radius
+
+    def calc_area(self):
+        raise NotImplementedError("В дочернем классе должен быть определен метод calc_area ()")
+    
+class RectangleTable(Table):
+    def calc_area(self):
+        return self.width * self.length
+    
+class RoundTable(Table):
+    def calc_area(self):
+        return round(pi * self.radius ** 2, 2)
+    
+
+t = RectangleTable(20, 10)
+print(t.__dict__)
+print(t.calc_area())
+
+t1 = RectangleTable(20)
+print(t1.__dict__)
+print(t1.calc_area())
+
+t2 = RoundTable(radius=20)
+print(t2.__dict__)
+print(t2.calc_area())
