@@ -99,7 +99,7 @@ print(t2.calc_area())
 
 """
 # Задача
-'''
+"""
 class Currency(ABC):
     suffix = 'RUB'
     def __init__(self, value):
@@ -148,7 +148,7 @@ for elem in d:
 print("*" * 50)
 for elem in e:
     elem.print_info()
-'''
+"""
 
 # Интерфейсы
 
