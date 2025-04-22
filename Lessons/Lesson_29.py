@@ -84,3 +84,39 @@ class Line(Pos, Styles):
 l1 = Line(Point(10, 10), Point(100, 100), "green", 5)
 l1.draw()
 
+# _____________Миксины___________
+'''
+
+'''
+class MixinLog:
+    ID = 0
+
+    def __init__(self):
+        print("Init MixinLog")
+        MixinLog.ID += 1
+        self.id = MixinLog.ID
+
+    def save_sell_log(self):
+        print(f"{self.id}: товар был продан в 17:15")
+
+
+class Goods:
+    def __init__(self, name, weight, price):
+        print("Init Goods")
+        self.name = name
+        self.weight = weight
+        self.price = price
+        super().__init__()
+
+    def print_info(self):
+        print(f"{self.name}, {self.weight}, {self.price}")
+
+
+class Notebook(Goods, MixinLog):
+    pass
+
+
+n = Notebook("HP", 1.5, 35000)
+n.print_info()
+n.save_sell_log()
+
