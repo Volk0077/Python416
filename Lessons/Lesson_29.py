@@ -19,7 +19,7 @@ print(cat)
 
 # ________________________Множественное наследование__________________________
 
-'''
+"""
 class Creature:
     def __init__(self, name):
         self.name = name
@@ -44,13 +44,12 @@ dog = Dog("Buddy")
 dog.bark()
 dog.sleep()
 dog.play()
-'''
-
+"""
 
 
 # Задача
 
-
+"""
 class Point:
     def __init__(self, x, y):
         self.__x = x
@@ -83,9 +82,11 @@ class Line(Pos, Styles):
 
 l1 = Line(Point(10, 10), Point(100, 100), "green", 5)
 l1.draw()
+"""
+
 
 # _____________Миксины___________
-'''
+"""
 class MixinLog:
     ID = 0
 
@@ -117,7 +118,7 @@ class Notebook(Goods, MixinLog):
 n = Notebook("HP", 1.5, 35000)
 n.print_info()
 n.save_sell_log()
-'''
+"""
 
 #  ___________________Перегрузка оператора______________________
 
@@ -174,15 +175,37 @@ n.save_sell_log()
 # else:
 #     print("Время равно")
 
+
 class Student:
     def __init__(self, name, *marks):
         self.name = name
         self.marks = list(marks)
 
     def __getitem__(self, item):
-        return self.marks[item]
+        if 0 <= item < len(self.marks):
+            return self.marks[item]
+        else:
+            return IndexError("Неверный адрес")
+
+    def __setitem__(self, key, value):
+        if not isinstance(key, int) or key < 0:
+            raise TypeError("Индекс должен быть целым положительным числом")
+        
+        if key >= len(self.marks):
+            off = key +1 - len(self.marks)
+            self.marks.extend([None] * off)
+
+        self.marks[key] = value
+
+        def __delitem__ (self, key):
+            if not isinstance(key, int):
+                raise TypeError("Индекс должен быть целым числом")
+            del self.marks[key]
 
 
 s1 = Student("Сергей", 5, 5, 3, 4, 5)
 # print(s1.marks[2])
 print(s1[2])
+s1[10] = 4
+# del
+print(s1.marks)
