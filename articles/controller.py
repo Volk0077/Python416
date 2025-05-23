@@ -19,4 +19,4 @@ class Controller:
             self.article_model.add_article(article)
         elif answer == "2":
             articles = self.article_model.get_all_articles()
-            self.user_interface.show_all_articles()
+            self.user_interface.show_all_articles(articles)

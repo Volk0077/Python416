@@ -7,7 +7,7 @@ class Article:
 
     def __str__(self):
         return f"{self.title} ({self.author})"
-    
+
 
 class ArticleModel:
     def __init__(self):

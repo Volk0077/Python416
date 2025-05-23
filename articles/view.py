@@ -5,9 +5,11 @@ def add_title(title):
             output = func(*args, **kwargs)
             print("=" * 50)
             return output
+
         return wrap
+
     return wrapper
-        
+
 
 class UserInterface:
 
@@ -33,7 +35,7 @@ class UserInterface:
             dict_article[key] = input(f"Введите {key} статьи: ")
         # print("=" * 50)
         return dict_article
-    
+
     @add_title("Список статей")
     def show_all_articles(self, articles):
         # print(" Список статей: ".center(50, "="))
