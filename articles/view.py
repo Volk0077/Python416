@@ -17,7 +17,13 @@ class UserInterface:
     def wait_user_answer(self):
         # print("Ввод пользовательски данных".center(50, "="))
         print("Действия со статьями")
-        print(" 1 - создание статьи\n2-просмотр статей \nq  - выход из программы")
+        print(
+            "\n1 - создание статьи"
+            "\n2-просмотр статей"
+            "\n3 - просмотр определенной статьи"
+            "\n4 - удаление статьи"
+            "\nq  - выход из программы"
+        )
         user_answer = input("Выберите вариант действия: ")
         # print("=" * 50)
         return user_answer
@@ -42,3 +48,25 @@ class UserInterface:
         for ind, article in enumerate(articles, 1):
             print(f"{ind}. {article}")
         # print("=" * 50)
+
+    @add_title("Ввод названия статьи")
+    def get_user_article(self):
+        user_article = input("Введите название статьи: ")
+        return user_article
+
+    @add_title("Просмотр статьи")
+    def show_single_article(self, article):
+        for key in article:
+            print(f"{key} статьи - {article[key]}")
+
+    @add_title("Ошибка")
+    def show_incorrect_title_error(self, user_title):
+        print(f"Статьи с названием {user_title} не существует")
+
+    @add_title("Удаление статьи")
+    def remove_single_article(self, article):
+        print(f"Статья {article} - была удалена")
+
+    @add_title("Ошибка")
+    def show_incorrect_answer_error(self, answer):
+        print(f"Варианта {answer} не существует")
