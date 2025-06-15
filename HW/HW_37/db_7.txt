@@ -1,0 +1,33 @@
+5.	Напишите запрос, который выводил бы заказы клиента Liu
+
+SELECT onum
+FROM Orders
+WHERE cnum IN
+    (SELECT cnum
+    FROM Customers
+    WHERE cname = 'Liu'
+)
+
+6.	Определите наибольшие комиссионные продавца для Рима.
+SELECT MAX(com)
+FROM Salespeople
+WHERE snum IN  
+    (SELECT snum
+    FROM Customers    
+    WHERE city = "Rome")
+
+7.	Напишите запрос который выведет всех клиентов обслуживаемых продавцом Motiка.
+SELECT cname
+FROM Customers
+WHERE snum IN
+    (SELECT snum
+    FROM Salespeople    
+    WHERE sname = "Motika")
+
+8.	Напишите запрос, который выведет максимальный рейтинг заказчика для продавцов имеющих комиссионные больше 0,11%.
+SELECT MAX(rating)
+FROM Customers
+WHERE snum IN
+    (SELECT snum
+    FROM Salespeople    
+    WHERE com > 0.11)
