@@ -1,0 +1,10 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "sq",
+      "database": "${workspaceFolder:Python416}/Lessons/Flask/two/flsk.db"
+    }
+  ]
+}
