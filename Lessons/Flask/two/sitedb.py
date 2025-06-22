@@ -1,6 +1,6 @@
 import sqlite3, os
 from flask import Flask, render_template, flash, request, g
-# from fdatabase import FDataBase
+from fdatabase import FDataBase
 
 
 #  Конфигурация

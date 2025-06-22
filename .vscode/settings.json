@@ -6,5 +6,7 @@
       "name": "sq",
       "database": "${workspaceFolder:Python416}/Lessons/Flask/two/flsk.db"
     }
-  ]
+  ],
+  "cody.autocomplete.completeSuggestWidgetSelection": false,
+  "cody.autocomplete.triggerDelay": 0
 }
