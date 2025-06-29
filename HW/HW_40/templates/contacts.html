@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Свяжитесь с нами</h1>
+    <p>Мы всегда рады ответить на ваши вопросы!</p>
+    
+    <h2>Контактная информация</h2>
+    <div style= "padding: 15px; border-radius: 5px;">
+        <p><strong>Телефон:</strong> +7 (123) 456-78-90</p>
+        <p><strong>Email:</strong> info@example.com</p>
+        <p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 123</p>
+        <p><strong>Время работы:</strong> Пн-Пт: 9:00-18:00</p>
+    </div>
+    
+    <h2>Напишите нам</h2>
+    <p>Если у вас есть вопросы или предложения, не стесняйтесь обращаться к нам!</p>
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{ cat }}"> {{ msg }} </div>
+    {% endfor %}
+
+    <form action="/contacts" method="post">
+    <p>Имя: <input type="text" name="username" required></p>
+    <p>Email: <input type="email" name="email" required></p>
+    <p>Сообщение:</p>
+    <p><textarea name="message" cols="40" rows="7"></textarea></p>
+    <p><button>Отправить</button> </p>
+
+
+{% endblock %}

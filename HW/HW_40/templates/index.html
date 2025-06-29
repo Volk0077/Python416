@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="main-title">Pricing</h1>
+    <div class="courses-row">
+        {% for course in courses %}
+        <div class="course-card">
+            <div class="course-header">{{ course.title }}</div>
+            <div class="course-price">{{ course.price|int }} руб/мес</div>
+            <div class="course-desc">{{ course.short_description }}</div>
+            <button class="buy-btn">Купить</button>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Добавить курс</h1>
+<form method="post">
+    <p>Название: <input name="title" required></p>
+    <p>Краткое описание: <textarea name="short_description" required></textarea></p>
+    <p>Цена (руб/мес): <input name="price" type="number" required></p>
+    <p><button type="submit">Добавить</button></p>
+</form>
+{% endblock %}
