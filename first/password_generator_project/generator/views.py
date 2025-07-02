@@ -21,3 +21,7 @@ def password(request):
     for i in range(length):
         psw += random.choice(char)
     return render(request, 'generator/password.html', {'password':psw})
+
+
+def instruction(request):
+    return render(request, 'generator/instruction.html')

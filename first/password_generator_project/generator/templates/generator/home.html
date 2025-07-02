@@ -26,7 +26,9 @@
             <input type="checkbox" name="special"> Спецсимволы <br>
         </p>
 
-        <input type="submit" value="Сгенерировать пароль">
+        <input type="submit" value="Сгенерировать пароль"> 
+        <!-- <button type="button" onclick="window.location.href='{% url 'instruction' %}'">Инструкция</button> -->
+        <a href="{% url 'instruction' %}" class="btn">Инструкция</a>
     </form>
 </div>
 </body>

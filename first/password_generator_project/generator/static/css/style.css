@@ -1,17 +1,42 @@
-body{
+body {
     background: lightyellow;
 }
 
-.container{
+.container {
     width: 400px;
     margin: 0 auto;
 }
-.container h1{
+.container h1 {
     text-align: center;
 }
-.container form, .container h2{
+.container form,
+.container h2{
     background: greenyellow;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 7px;
 }
+.container p{
+    background: greenyellow;
+    padding: 10px 10px;
+    margin: 0;
+}
+.container ul, li{
+    background: greenyellow;
+    margin: 0;
+} 
+.btn {
+    padding: 2px 10px;
+    font-size: 14px;
+    border: 1px solid #333;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    color: #333;
+    border-radius: 4px; 
+    margin: 5px; 
+}
+.btn:hover {
+    background-color: #e0e0e0;
+} 
