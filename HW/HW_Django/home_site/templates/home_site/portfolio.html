@@ -1,0 +1,14 @@
+{% extends 'home_site/base.html' %} {% load static %} {% block content %}
+
+<h1>Стек технологий</h1>
+<div class="works-list">
+    {% for work in works %}
+    <div>
+        <h2>{{ work.title }}</h2>
+        <img src="{{ work.image.url }}" alt="{{ work.title }}" />
+        <p>{{ work.descriptions }}</p>
+    </div>
+    {% endfor %}
+    <p><a href="{% url 'home' %}">Вернуться на главную</a></p>
+</div>
+{% endblock %}
