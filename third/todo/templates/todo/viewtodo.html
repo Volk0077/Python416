@@ -5,12 +5,21 @@
 
 <h3>{{ error }}</h3>
 
+<div class="btn">
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button class="btn">Сохранить</button>
+    </form>
 
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <button class="btn">Сохранить</button>
+    <form action="{% url 'completetodo' todo.id %}" method="POST">
+        {% csrf_token %}
+        <button class="btn good">Выполнено</button>
+    </form>
 
-</form>
-
+    <form action="{% url 'deletetodo' todo.id %}" method="POST">
+        {% csrf_token %}
+        <button class="btn remove">Удалить</button>
+    </form>
+</div>
 {% endblock %}
