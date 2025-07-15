@@ -1,0 +1,13 @@
+{% extends 'home_site/base.html' %} {% load static %} {% block content %}
+
+<h1>Страница блога</h1>
+
+{% for bg in blog %}
+<div class="element">
+    <h2 class="top">{{ bg.title }}</h2>
+    <div class="blog_text">
+        <h5>{{ bg.date }}</h5>
+        <div>{{ bg.description }}</div>
+    </div>
+</div>
+{% endfor %} {% endblock %}

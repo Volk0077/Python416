@@ -82,32 +82,32 @@ h2 {
     padding: 20px 20px 60px;
     box-sizing: border-box;
 }
-.menu{
+.menu {
     background: lightyellow;
     padding: 10px;
-    border-bottom: 6px solid #FFF;
+    border-bottom: 6px solid #fff;
 }
 
-.menu .wrap{
+.menu .wrap {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 
-.menu a{
+.menu a {
     color: #663366;
     font-weight: bold;
     text-decoration: none;
 }
 
-.menu ul{
+.menu ul {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     font-size: 20px;
 }
 
-.menu li{
+.menu li {
     margin-left: 40px;
 }

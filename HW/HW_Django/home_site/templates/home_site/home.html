@@ -1,11 +1,14 @@
 {% extends 'home_site/base.html' %} {% load static %} {% block content %}
 <div>
     <h1>Это учебный сайт на джанго</h1>
-    <div class="png">
+    <div class="portfolio-blog-row">
         <a href="{% url 'portfolio' %}">
-            <img src="{% static 'home_site/logo.png' %}" alt="" />
+            <img src="{% static 'home_site/logo.png' %}" alt="Portfolio"/>
+        </a>
+        <a href="{% url 'blog' %}">
+            <img src="{% static 'home_site/blog-300x151.jpg' %}" alt="Blog"/>
         </a>
     </div>
 
-    {% endblock %}
+{% endblock %}
 </div>
