@@ -1,13 +1,16 @@
 {% extends 'home_site/base.html' %} {% load static %} {% block content %}
 
 <h1>Страница блога</h1>
+<h2 class="count">Постов: {{ blog.count }} </h2>
 
 {% for bg in blog %}
 <div class="element">
-    <h2 class="top">{{ bg.title }}</h2>
+    <h2 class="top">
+        <a href="{% url 'detail' bg.id %}">{{ bg.title }}</a>
+    </h2>
     <div class="blog_text">
-        <h5>{{ bg.date }}</h5>
-        <div>{{ bg.description }}</div>
+        <h5>{{ bg.date|date:'d.m.Y' }}</h5>
+        <div>{{ bg.description|striptags|truncatechars:250 }}</div>
     </div>
 </div>
 {% endfor %} {% endblock %}

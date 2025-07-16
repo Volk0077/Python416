@@ -1,0 +1,8 @@
+{% extends 'home_site/base.html' %} {% load static %} {% block content %}
+<div class="detail">
+    <h1>{{ bg.title }}</h1>
+    <h2>{{ bg.date|date:'j E Y' }}</h2>
+    {{ bg.description|safe }}
+</div>
+
+{% endblock %}

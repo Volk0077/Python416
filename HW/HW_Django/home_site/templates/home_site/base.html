@@ -6,8 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{{title}}</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <link rel="icon" type="image/x-icon" href="{% static 'home_site/favicon.ico' %}">
     </head>
     <body>
+        <div class="menu">
+            <div class="wrap">
+                <ul>
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                </ul>
+            </div>    
+        </div>    
         <div class="content">
             <div class="wrap">{% block content %} {% endblock %}</div>
         </div>

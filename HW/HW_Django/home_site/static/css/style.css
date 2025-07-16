@@ -91,3 +91,48 @@ h2 {
     border: 6px solid #fff;
     margin-bottom: 60px;
 }
+.top{
+    background: #663366;
+    margin: 0;
+}
+
+.top a{
+    color: #FFF;
+    text-decoration: none;
+    padding: 20px;
+    display: block;
+    text-align: left;
+}
+
+.blog_text{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.count{
+    padding: 10px 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.detail{
+    background: #f7f7f7;
+    padding: 20px 20px 60px;
+    box-sizing: border-box;
+}
+.menu{
+    background: #333;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+.menu a{
+    color: #FFF;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+.menu ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 30px;
+}

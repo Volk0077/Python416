@@ -6,3 +6,5 @@ class Portfolio(models.Model):
     descriptions = models.TextField()
     image = models.ImageField(upload_to='portfolio_images/')
     
+    def __str__(self):
+        return self.title
