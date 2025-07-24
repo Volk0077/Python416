@@ -1,7 +1,4 @@
-{% extends 'projects/base.html' %} 
-
-
-{% block content %}
+{% extends 'projects/base.html' %} {% block content %}
 
 <!-- Main Section -->
 <main class="projects">
@@ -39,12 +36,13 @@
     <section class="projectsList">
         <div class="container">
             <div class="grid grid--three">
-
                 {% for project in projects %}
-
                 <div class="column">
                     <div class="card project">
-                        <a href="{% url 'project' project.id %}" class="project">
+                        <a
+                            href="{% url 'project' project.id %}"
+                            class="project"
+                        >
                             <img
                                 class="project__thumbnail"
                                 src="{{ project.featured_images.url }}"
@@ -57,16 +55,18 @@
                                 <p>
                                     <a
                                         class="project__author"
-                                        href="profile.html"
-                                        >By Dennis Ivanov</a
+                                        href="{% url 'project' project.id %}"
+                                        >By {{ project.owner.name }}</a
                                     >
                                 </p>
                                 <p class="project--rating">
-                                    <span style="font-weight: bold">{{ project.vote_rating}}%</span>
-                                    Postitive Feedback ({{ project.vote_total }} Votes)
+                                    <span style="font-weight: bold"
+                                        >{{ project.vote_rating}}%</span
+                                    >
+                                    Positive Feedback ({{project.vote_total}}
+                                    Votes)
                                 </p>
                                 <div class="project__tags">
-
                                     {% for tag in project.tags.all %}
 
                                     <span class="tag tag--pill tag--main">
@@ -80,6 +80,8 @@
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+        </div>
     </section>
 
     <div class="pagination">

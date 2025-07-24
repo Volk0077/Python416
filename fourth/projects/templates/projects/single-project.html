@@ -36,7 +36,7 @@
                     alt="portfolio thumbnail"
                 />
                 <a href="profile.html" class="singleProject__developer"
-                    >Md. Shahriar Parvez</a
+                    >{{ project.owner.name }}</a
                 >
                 <h2 class="singleProject__title">{{project.title}}</h2>
                 <h3 class="singleProject__subtitle">About the Project</h3>
@@ -45,7 +45,7 @@
                 <div class="comments">
                     <h3 class="singleProject__subtitle">Feedback</h3>
                     <h5 class="project--rating">
-                        {{ project.vote_rating }}% Postitive Feedback ({{
+                        {{ project.vote_rating }}% Positive Feedback ({{
                         project.vote_total }} Votes)
                     </h5>
 
