@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{title}}</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <link rel="icon" type="image/x-icon" href="{% static 'home_site/favicon.ico' %}">
-    </head>
-    <body>
-        <div class="menu">
-            <div class="wrap">
-                <ul>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="icon" type="image/x-icon" href="{% static 'home_site/favicon.ico' %}">
+</head>
+<body>
+
+
+    <div class="menu">
+        <div class="wrap">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li class="logo">Пользователь: {{user.username}}</li>
                     <li><a href="{% url 'home' %}">Главная</a></li>
-                </ul>
-            </div>    
+                    <li>
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button class="top">Выйти</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">Зарегистрироваться</a></li>
+                    <li><a href="">Войти</a></li>
+                {% endif %}
+            </ul>
         </div>    
-        <div class="content">
-            <div class="wrap">{% block content %} {% endblock %}</div>
-        </div>
-    </body>
+    </div>    
+    <div class="content">
+        <div class="wrap">{% block content %} {% endblock %}</div>
+    </div>
+</body>
 </html>
