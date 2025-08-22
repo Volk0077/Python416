@@ -92,8 +92,13 @@ h2 {
     margin-bottom: 60px;
 }
 .top{
-    background: #663366;
+    padding: 4px 24px;
     margin: 0;
+    background: transparent;
+    border: none;
+    color: #FFF;
+    box-shadow: none;
+    font-size: 24px;
 }
 
 .top a{
@@ -143,4 +148,33 @@ h2 {
 .logo{
     padding: 10px 20px;
     color:#FFF
+}
+.content .wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+h1, h2{
+    color:#333;
+}
+.btn{
+    background: #333;
+    color: #FFF;
+}
+button{
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.center{
+    text-align: center;
+}
+input{
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 10px;
 }

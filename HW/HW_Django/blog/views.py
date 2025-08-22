@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Blog
 
 
+
 def blog_view(request):
     blog = Blog.objects.order_by("-date")
     context = {"title": "Блог", "blog": blog}
