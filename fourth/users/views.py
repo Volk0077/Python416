@@ -4,6 +4,9 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
 
 
 def login_user(request):
@@ -15,20 +18,21 @@ def login_user(request):
         try:
             user = User.objects.get(username=username)
         except ObjectDoesNotExist:
-            print("Такого пользователя не существует")
+            messages.error(request, 'Такого пользователя не существует')
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('profiles')
         else:
-            print("Неверный логин или пароль")
+            messages.error(request,"Неверный логин или пароль")
 
     return render(request, "users/login_register.html")
 
 
 def logout_user(request):
     logout(request)
+    messages.info(request, 'Вы вышли из учетной записи')
     return redirect('login')
 
 
@@ -51,3 +55,45 @@ def user_profile(request, pk):
         'other_skills': other_skills,
     }
     return render(request, 'users/profile.html', context)
+
+
+def register_user(request):
+    page = 'register'
+    form = CustomUserCreationForm()
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            messages.success(request, 'Вы успешно зарегистрированы')
+            login(request, user)
+            return redirect('profiles')
+        else:
+            messages.error(request, 'При регистрации произошла ошибка')
+
+
+    context ={
+        'page': page,
+        'form': form
+    }
+    return render(request, 'users/login_register.html', context)
+
+
+login_required(login_url='login')
+def user_account(request):
+    prof = request.user.profile # доступ текущего пользователя к своему профилю 
+    skills = prof.skill_set.all()
+    projects = prof.project_set.all()
+
+    context = {
+        'profile': prof,
+        'skills': skills,
+        'projects': projects
+    }
+    return render(request, 'users/account.html', context)
+
+
+login_required(login_url='login')
+def edit_account(request):
+    return render(request, 'users/profile_form.html' )
