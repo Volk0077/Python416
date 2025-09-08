@@ -1,10 +1,27 @@
-{% extends 'projects/base.html'%} {% block content %}
+{% extends 'projects/base.html'%} {% load static %} {% block content %}
 
-<h1>Edit Account</h1>
 
-<form action="{% url 'edit_account' %}" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Submit">
-</form>
+<main class="formPage my-xl">
+        <div class="content-box">
+            <div class="formWrapper">
+                <a class="backButton" href="{% url 'account' %}"><img src="{% static 'images/left.png' %}" alt="left"></a>
+                <br>
+
+                <form action="{% url 'edit_account' %}" enctype="multipart/form-data" class="form" method="POST">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                    <div class="form__field">
+                        <label for="formInput#text">{{ field.label }}: </label>
+                        {{ field }}
+                    </div>
+
+                    {% endfor %}
+                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </main>
+
 
 {% endblock %}

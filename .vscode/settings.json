@@ -1,12 +1,14 @@
 {
-  "sqltools.connections": [
-    {
-      "previewLimit": 50,
-      "driver": "SQLite",
-      "name": "sq",
-      "database": "${workspaceFolder:Python416}/Lessons/Flask/two/flsk.db"
-    }
-  ],
-  "cody.autocomplete.completeSuggestWidgetSelection": false,
-  "cody.autocomplete.triggerDelay": 0
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "sq",
+            "database": "${workspaceFolder:Python416}/Lessons/Flask/two/flsk.db"
+        }
+    ],
+    "cody.autocomplete.completeSuggestWidgetSelection": false,
+    "cody.autocomplete.triggerDelay": 0,
+    "github.copilot.chat.agent.currentEditorContext.enabled": false,
+    "github.copilot.chat.editor.temporalContext.enabled": false
 }

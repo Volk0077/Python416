@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
+from .forms import ProfileForm
 
 
 def login_user(request):
@@ -15,10 +16,12 @@ def login_user(request):
     if request.method == "POST":
         username = request.POST['username'].lower()
         password = request.POST['password']
+        
         try:
             user = User.objects.get(username=username)
         except ObjectDoesNotExist:
             messages.error(request, 'Такого пользователя не существует')
+            return render(request, "users/login_register.html")
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -80,7 +83,7 @@ def register_user(request):
     return render(request, 'users/login_register.html', context)
 
 
-login_required(login_url='login')
+@login_required(login_url='login')
 def user_account(request):
     prof = request.user.profile # доступ текущего пользователя к своему профилю 
     skills = prof.skill_set.all()
@@ -94,6 +97,18 @@ def user_account(request):
     return render(request, 'users/account.html', context)
 
 
-login_required(login_url='login')
+@login_required(login_url='login')
 def edit_account(request):
-    return render(request, 'users/profile_form.html' )
+    profile = request.user.profile # доступ к профилю пользователя
+    form = ProfileForm(instance=profile) # отображение уже существующих данных в форме
+
+    if request.method =='POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('account')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'users/profile_form.html', context )

@@ -1,4 +1,4 @@
-{% extends 'projects/base.html'%} {% block content %}
+{% extends 'projects/base.html' %} {% block content %}
 
 <!-- Main Section -->
 <main class="settingsPage profile my-md">
@@ -17,25 +17,28 @@
                             src="{{ profile.profile_image.url }}"
                         />
                         <h2 class="dev__name">{{ profile.name }}</h2>
-                        <p class="dev__title">
-                            {{profile.short_intro}}
-                        </p>
+                        <p class="dev__title">{{ profile.short_intro }}</p>
+
                         <ul class="dev__social">
                             {% if profile.social_github %}
                             <li>
-                                <a title="Github" href="{{ profile.social_github }}" target="_blank"
+                                <a
+                                    title="Github"
+                                    href="{{ profile.social_github }}"
+                                    target="_blank"
                                     ><i class="fa fa-github-square"></i
                                 ></a>
                             </li>
-                            {% endif %}
-                            {% if profile.social_youtube  %}
+                            {% endif %} {% if profile.social_youtube %}
                             <li>
-                                <a title="Youtube" href="{{ profile.social_youtube }}" target="_blank"
+                                <a
+                                    title="Youtube"
+                                    href="{{ profile.social_youtube }}"
+                                    target="_blank"
                                     ><i class="fa fa-youtube"></i
                                 ></a>
                             </li>
-                            {% endif %}
-                            {% if  profile.social_website   %}
+                            {% endif %} {% if profile.social_website %}
                             <li>
                                 <a
                                     title="Personal Website"
@@ -52,17 +55,11 @@
             <div class="column column--2of3">
                 <div class="devInfo">
                     <h3 class="devInfo__title">About Me</h3>
-                    <p class="devInfo__about">
-                        {{profile.bio}}
-                    </p>
+                    <p class="devInfo__about">{{ profile.bio }}</p>
                 </div>
                 <div class="settings">
                     <h3 class="settings__title">Skills</h3>
-                    <a
-                        class="tag tag--pill tag--sub settings__btn tag--lg"
-                        href="#"
-                        ><i class="im im-plus"></i> Add Skill</a
-                    >
+                    <p style="color: #999; font-style: italic;">Функции для работы с навыками будут добавлены позже</p>
                 </div>
 
                 <table class="settings__table">
@@ -70,21 +67,10 @@
                     <tr>
                         <td class="settings__tableInfo">
                             <h4>{{ skill.name }}</h4>
-                            <p>
-                                {{ skill.description }}
-                            </p>
+                            <p>{{ skill.descriptions }}</p>
                         </td>
                         <td class="settings__tableActions">
-                            <a
-                                class="tag tag--pill tag--main settings__btn"
-                                href="#"
-                                ><i class="im im-edit"></i> Edit</a
-                            >
-                            <a
-                                class="tag tag--pill tag--main settings__btn"
-                                href="#"
-                                ><i class="im im-x-mark-circle-o"></i> Delete</a
-                            >
+                            <span style="color: #999; font-style: italic;">Редактирование будет доступно позже</span>
                         </td>
                     </tr>
                     {% endfor %}
@@ -94,7 +80,7 @@
                     <h3 class="settings__title">Projects</h3>
                     <a
                         class="tag tag--pill tag--sub settings__btn tag--lg"
-                        href="#"
+                        href="{% url 'create_project' %}"
                         ><i class="im im-plus"></i> Add Project</a
                     >
                 </div>
@@ -105,27 +91,25 @@
                         <td class="settings__thumbnail">
                             <a href="{% url 'project' project.id %}"
                                 ><img
-                                    src="{{project.featured_images.url}}"
+                                    src="{{ project.featured_images.url }}"
                                     alt="Project Thumbnail"
                             /></a>
                         </td>
                         <td class="settings__tableInfo">
                             <a href="{% url 'project' project.id %}"
-                                >{{project.title}}</a
+                                >{{ project.title }}</a
                             >
-                            <p>
-                                {{project.description|slice:'150'}}...
-                            </p>
+                            <p>{{ project.description|slice:"150" }}...</p>
                         </td>
                         <td class="settings__tableActions">
                             <a
                                 class="tag tag--pill tag--main settings__btn"
-                                href="#"
+                                href="{% url 'update_project' project.id %}"
                                 ><i class="im im-edit"></i> Edit</a
                             >
                             <a
                                 class="tag tag--pill tag--main settings__btn"
-                                href="#"
+                                href="{% url 'delete_project' project.id %}"
                                 ><i class="im im-x-mark-circle-o"></i> Delete</a
                             >
                         </td>
@@ -136,4 +120,5 @@
         </div>
     </div>
 </main>
+
 {% endblock %}
