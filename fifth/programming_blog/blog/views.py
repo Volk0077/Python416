@@ -1,11 +1,45 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.forms import BaseModelForm
+from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.views.generic import FormView, ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login
 
 from .forms import *
 from .models import *
 from .utils import *
+
+
+class LoginUser(DataMixin, LoginView):
+    form_class = AuthenticationForm
+    template_name = 'blog/login.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Авторизация")
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+
+class RegisterUser(DataMixin, CreateView):
+    form_class = RegisterUserForm
+    template_name = 'blog/register.html'
+    # success_url = reverse_lazy('login') этот метод нужен если не определена Авторизация пользователя после регистрации
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Регистрация")
+        return dict(list(context.items()) + list(c_def.items()))
+    
+    # Авторизация пользователя после регистрации
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('index')
+
 
 
 class BlogHome(DataMixin, ListView):
@@ -63,3 +97,18 @@ class AddPage(LoginRequiredMixin, DataMixin, CreateView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Добавление статьи")
         return dict(list(context.items()) + list(c_def.items()))
+
+
+class ContactFormView(DataMixin, FormView):
+    form_class = ContactForm
+    template_name = 'blog/contact.html'
+    success_url = reverse_lazy('index')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Обратная связь")
+        return dict(list(context.items()) + list(c_def.items())) 
+    
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return redirect('index')

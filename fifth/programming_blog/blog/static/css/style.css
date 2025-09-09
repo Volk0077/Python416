@@ -124,3 +124,57 @@ button {
 form label {
     font-size: 18px;
 }
+.list-pages {
+    display: flex;
+    justify-content: center;
+}
+.page-num-selected {
+    background: #81d4fa;
+    padding: 20px;
+}
+.list-pages a {
+    background: #264b5d;
+    padding: 20px;
+    display: block;
+    color: #fff;
+}
+.page-num {
+    margin: 6px;
+    font-weight: bold;
+}
+input,
+textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+#id_is_published {
+    width: 20px;
+    height: 20px;
+}
+
+#id_cat {
+    font-size: 20px;
+    padding: 4px;
+}
+
+.last a {
+    display: inline;
+}
+.last {
+    color: grey;
+}
+.item button {
+    width: 90px;
+    background: transparent;
+    border: none;
+    color: #81d4fa;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.item {
+    display: inline;
+}
