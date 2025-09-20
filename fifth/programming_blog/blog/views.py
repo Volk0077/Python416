@@ -7,6 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 
 from .forms import *
 from .models import *
@@ -111,4 +113,21 @@ class ContactFormView(DataMixin, FormView):
     
     def form_valid(self, form):
         print(form.cleaned_data)
+        # переменные для отправки сообщения на email из формы обратной связи в консоль 
+        subject = "Message" # Тема письма
+        body ={
+            'name': form.cleaned_data['name'],# Имя отправителя
+            'email': form.cleaned_data['email'],# Email отправителя
+            'content': form.cleaned_data['content'],# Сообщение отправителя
+        }
+        message = '\n'.join(body.values()) 
+        try:
+            send_mail(
+                subject,
+                message,
+                form.cleaned_data['email'],
+                ['admin@localhost'] # кому адресовано  письмо 
+            )
+        except BadHeaderError:
+            return HttpResponse('Найден некорректный заголовок')
         return redirect('index')
