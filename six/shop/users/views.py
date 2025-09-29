@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.contrib import auth, messages
+# Импорты для отправки данных на электронную почту
+from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
+from django.http import HttpResponse
 
 
 def login(request):
@@ -27,6 +31,21 @@ def register(request):
     if request.method == 'POST':
         form= UserRegistrationForm(data=request.POST)
         if form.is_valid():
+            
+            # блок для отправки почты 
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            subject = 'Ваш аккаунт создан'
+            message = username+'! Добро пожаловать в Store!'
+            try:
+                send_mail(
+                    subject,
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [email]
+                )
+            except BadHeaderError:
+                return HttpResponse('Обнаружен неверный заголовок')
             form.save()
             messages.success(request, 'Вы успешно зарегистрировались')
             return redirect('login')
