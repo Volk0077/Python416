@@ -138,3 +138,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'django88test@gmail.com'
 EMAIL_HOST_PASSWORD = 'pzqvrboxznwjrlyv'
+
+DOMAIN_NAME = 'http://127.0.0.1:8000/'
