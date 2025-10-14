@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cms',
     'price',
-    'crm'
+    'crm',
+    'telebot'
 ]
 
 MIDDLEWARE = [
